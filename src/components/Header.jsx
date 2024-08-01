@@ -4,7 +4,7 @@ const Header= ()=> {
             <div className='logo-container'>
                 <img className='logo' src="https://png.pngtree.com/png-vector/20220708/ourmid/pngtree-fast-food-logo-png-image_5763171.png"/>
             </div>
-            <div className='Title'>FOODY MOODY</div>
+            <div className='Title'>FOODIEZE</div>
             <div className='nav-items'>
                 <ul>
                     <li>Home</li>
