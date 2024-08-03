@@ -4,7 +4,7 @@
 .Header{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(255, 249, 236);
+    background-color: rgb(255, 240, 209);
 }
 .logo-container >img{
     padding: 0px 10%;
@@ -39,14 +39,17 @@
     margin-right: auto;
 }
 .searchBox{
-    border-radius: 20px 0 0 20px ;
+    border-radius: 25px 0 0 25px ;
     width: 40vw;
     padding: 1%;
     border: solid 2px black;
     font-size: medium;
+    border-right: 0;
 }
 .searchButton{
-    border-radius: 0 20px 20px 0;
+    border:  2px solid black;
+    border-left: 0;
+    border-radius: 0 25px 25px 0;
     font-size: medium;
     font-weight: bold;
     padding: 1%;
@@ -61,6 +64,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    min-height: 100vh;
 }
 .res-card{
     background-color:azure;
@@ -164,4 +168,57 @@
 .near-btn:active{
     box-shadow: 0 1px #666;
     transform: translateY(1px);
+}
+.sm-logo{
+    margin: 0 25px;
+    height: 60px;
+}
+.footer{
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    background-color: black;
+}
+.bye-msg{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: aliceblue;
+    font-size: larger;
+    margin: 20px;
+}
+.policy{
+    display: flex;
+    list-style-type: none;
+}
+.policy > li{
+    cursor: pointer;
+    color: white;
+    padding: 30px;
+}
+
+.copyright{
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    background-color: gray;
+}
+.Shimmer-container{
+    display: flex;
+    min-height: 80vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.shimmer-cards{
+    border-radius: 5%;
+    margin: 1%;
+    background-color: #cccccc;
+    width: 20vw;
+    height: 70vh;
+}
+.Notfound{
+    margin-top:20px;
+    font-size: xx-large;
 }
