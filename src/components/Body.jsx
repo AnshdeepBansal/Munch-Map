@@ -2,24 +2,21 @@ import resList from "../../utils/mockdata";
 import { useState,useEffect } from "react";
 import RestaurantCard from "./RestuarantCard";
 import Shimmer from "./Shimmer";
-import ErrorEle from "./ErrorEle";
 import NotFound from "./NotFound";
+import { Link } from "react-router-dom";
 
 const Body = ()=>{
     const [listofresturant,setlistofResturant]= useState([]);
-    console.log(listofresturant);
     
     const [filteredList , setfilterList] = useState(listofresturant);
-    const lat = [30.3102486,12.9716,19.0760,28.7041,18.5204]
-    const long =[78.02096569999999,77.5946,72.8777,77.1025,73.8567]
+    const lat = [30.3102486,12.9716,19.0760,28.7041,18.5204,26.8467];
+    const long =[78.02096569999999,77.5946,72.8777,77.1025,73.8567,80.9462];
     const fetch_data = async ()=>{
-        let value = Math.floor(Math.random()*10);
         console.log("fetching........s");
-        console.log(long.length);
-        const data = await fetch(`https://www.swiggy.com/mapi/homepage/getCards?lat=${lat[value%lat.length]}&lng=${long[value%long.length]}`);
+        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[5]}&lng=${long[5]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
         const json = await data.json();
         console.log(json);
-        const temp = json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants || json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants || json?.data?.success?.cards[2]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+        const temp = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setlistofResturant(temp);
         setfilterList(temp);
     }
@@ -31,7 +28,7 @@ const Body = ()=>{
     
     const [inputvalue,setinputvalue] = useState("");
     
-    if(listofresturant.length == 0)
+    if(listofresturant && listofresturant.length == 0)
         return (<Shimmer/>)
     return(
         <div className='body'>
@@ -49,7 +46,7 @@ const Body = ()=>{
                 className="top-rated"
                 onClick={() => {
                     setfilterList(listofresturant.filter(
-                        (res) => res.info.avgRating >= 4.5
+                        (res) => res.info.avgRating >= 4.2
                     ))
                     setinputvalue("");
                 }}
@@ -79,10 +76,9 @@ const Body = ()=>{
                 }} className='searchButton'>Search</button>
              </div>
              <div className='res-card-container'>
-             { 
-             filteredList.length == 0?<NotFound/>:filteredList.map((res) => {
-                return <RestaurantCard key={res?.info?.id} resData={res} />
-             })}
+             {filteredList?filteredList.length == 0?<NotFound/>:filteredList.map((res) => {
+                return <Link key={res?.info?.id} to="/restaurant" ><RestaurantCard  resData={res} /></Link>
+             }):<NotFound/>}
              </div>
         </div>
     )

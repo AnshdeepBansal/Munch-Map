@@ -4,7 +4,9 @@
 .Header{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(255, 240, 209);
+    background-color:rgb(225, 230, 230);
+    border-bottom: 1px solid black;
+    margin-bottom: 0.5%;
 }
 .logo-container >img{
     padding: 0px 10%;
@@ -17,18 +19,25 @@
 }
 .nav-items > ul >li{
     font-size: larger;
-    padding: 1.6em;
+    margin: 1em;
+    padding: 0.6em;
+}
+.nav-items>ul>li>a{
+    text-decoration: none;
+    color: black;
 }
 .nav-items > ul >li:hover{
     cursor: pointer;
-    text-decoration:underline;
+    border-radius: 50%;
+    background-color:rgb(210, 218, 221)
 }
 .Title{
-    padding: 25px;
-    font-size: xx-large;
-    font-style: italic;
+    margin-top: 1.5%;
+    font-size:xx-large;
+    font-style: normal;
     font-weight: bolder;
-    color: rgb(215, 90, 0);
+    color: rgb(46, 59, 111);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .search{
@@ -64,7 +73,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 .res-card{
     background-color:azure;
@@ -78,6 +87,13 @@
     border-radius: 5%;
     overflow:hidden;
     box-shadow: 6px 6px;
+}
+.res-card-container > a{
+    display: flex;
+    width: 18vw;
+    margin: 1%;
+    text-decoration: none;
+    color: black;
 }
 .res-card:hover{
     scale: 1.02;
@@ -175,7 +191,7 @@
 }
 .footer{
     display: flex;
-    margin-top: 5%;
+    margin-top: 2%;
     flex-direction: column;
     justify-content: center;
     align-items:center;
@@ -214,11 +230,23 @@
 .shimmer-cards{
     border-radius: 5%;
     margin: 1%;
-    background-color: #cccccc;
+    background-color: #dfdfdf;
     width: 20vw;
     height: 70vh;
 }
 .Notfound{
-    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: xx-large;
+}
+.err-msg-container{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.err-msg-container > img{
+    height: 550px;
 }
