@@ -1,6 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import ShimmerMenu from "./ShimmerMenu";
+import MenuCard from "./MenuCard";
+
 const RestaurantMenu = ()=>{
+
+    const [Menu,setMenu] = useState([]);
     
     const {resId} = useParams();
     useEffect(()=>{
@@ -11,17 +16,19 @@ const RestaurantMenu = ()=>{
         const json = await data.json();
         console.log(json);
         const temp = json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards || json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
+        setMenu(temp);
         console.log(temp);
     }
+
+    if(Menu.length == 0)
+        return <ShimmerMenu/>
+
     return (
         <>
             <div className="Menu">
-                <div className="Menu-card">
-                    <h1>{resId}</h1>
-                    <h1>momo</h1>
-                    <h1>paneer</h1>
-                    <h1>daal</h1>
-                </div>
+                {Menu.map((item)=>{
+                    return <MenuCard key={item?.card?.info?.id} CardData = {item?.card?.info}/>;
+                })}
             </div>
         </>
     )

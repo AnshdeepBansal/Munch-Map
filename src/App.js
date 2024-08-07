@@ -7,7 +7,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Contact from './components/Contact';
 import ErrorEle from './components/ErrorEle';
 import About from './components/About';
-import RestaurantMenu from './RestaurantMenu';
+import RestaurantMenu from './components/RestaurantMenu';
 //we will not write like this but jsx internally make a react element
 let root = ReactDOM.createRoot(document.querySelector(".root"));
 

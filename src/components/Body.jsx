@@ -6,6 +6,9 @@ import NotFound from "./NotFound";
 import { Link } from "react-router-dom";
 
 const Body = ()=>{
+
+    // const OnlineStatus = useOnlineStatus(); 
+
     const [listofresturant,setlistofResturant]= useState([]);
     
     const [filteredList , setfilterList] = useState(listofresturant);
@@ -14,7 +17,7 @@ const Body = ()=>{
     
     const fetch_data = async ()=>{
         console.log("fetching........s");
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[0]}&lng=${long[0]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
+        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[3]}&lng=${long[3]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
         const json = await data.json();
         console.log(json);
         const temp = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -25,6 +28,8 @@ const Body = ()=>{
     useEffect(()=>{
         fetch_data();
     },[]);
+
+    
     
     
     const [inputvalue,setinputvalue] = useState("");
@@ -66,10 +71,10 @@ const Body = ()=>{
             >
                 Fast Delivery
             </button>
-                <input className='searchBox' placeholder='enter your favourite resturant/dish' value={inputvalue} onChange={(e)=>{
+                <input className='searchBox' placeholder='Kya Khayega Bidu? .. aree bol sharma matt' onChange={(e)=>{
+                    setinputvalue(e.target.value);
                     const updatedList = resList.filter((res)=>res.info.name.toLowerCase().includes(inputvalue.toLowerCase()))
                     setfilterList(updatedList); 
-                    setinputvalue(e.target.value);
                     
                 }}></input>
                 <button onClick={()=>{
