@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import ShimmerMenu from "./ShimmerMenu";
-import MenuCard from "./MenuCard";
 import ResDetails from "./ResDetails";
 import RestaurantCategory from "./ReataurantCategory";
 
 const RestaurantMenu = ()=>{
 
+    const [showIndex , setshowIndex] = useState(0);
     const [Categories,setCategories] = useState([]);
     const [ResInfo,setResInfo] = useState({});
     
@@ -30,14 +30,13 @@ const RestaurantMenu = ()=>{
     return (
         <>
             <ResDetails resinfo={ResInfo}/>
-            {/* <div className="Menu">
-                {Menu.map((item)=>{
-                    return <MenuCard key={item?.card?.info?.id} CardData = {item?.card?.info}/>;
-                })}
-            </div> */}
             <div className="Categories">
-            {Categories?.map((c)=>{
-                return <RestaurantCategory key={i++} data={c.card.card}/>
+            {Categories?.map((c,index)=>{
+                return <RestaurantCategory key={i++} data={c.card.card} showitems={index == showIndex?true:false} setshowIndex = {()=>{
+                    if(showIndex == index)
+                        setshowIndex(null);
+                    else
+                        setshowIndex(index)}}/>
             })}
             </div>
         </>
