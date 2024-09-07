@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+import { IoMdContact } from "react-icons/io";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
 const Header= ()=> {
     //Subscribing to the store using the Selector
     const cartItems =  useSelector((store) => store.cart.items)
@@ -12,10 +16,10 @@ const Header= ()=> {
             <div className='Title'>MunchMap</div>
             <div className='nav-items'>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/contact">Contact Us</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/cart">Cart ({cartItems.length})</Link></li>
+                    <li><Link to="/"><IoHome className="cart-logo"/>Home</Link></li>
+                    <li><Link to="/contact"><IoMdContact className="cart-logo"/>Contact Us</Link></li>
+                    <li><Link to="/about"><BsFillEmojiSmileFill className="cart-logo"/>About Us</Link></li>
+                    <li><Link to="/cart"><FaShoppingCart className="cart-logo"/>Cart {cartItems.length? <>({cartItems.length})</>:<></>}</Link></li>
                 </ul>
             </div>
         </div>

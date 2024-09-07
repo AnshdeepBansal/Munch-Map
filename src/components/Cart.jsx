@@ -6,7 +6,7 @@ const Cart = ()=> {
     return(
         <>
             <div>
-                <ItemList items={cartItems}/>
+                <ItemList items={cartItems}/>//something wrong solve it!!!!
             </div>
         </>
     )
