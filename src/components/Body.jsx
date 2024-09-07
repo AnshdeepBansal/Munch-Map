@@ -20,7 +20,7 @@ const Body = ()=>{
     
     const fetch_data = async ()=>{
         console.log("fetching........s");
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[1]}&lng=${long[1]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
+        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[0]}&lng=${long[0]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
         const json = await data.json();
         console.log(json);
         const temp = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -56,7 +56,7 @@ const Body = ()=>{
                 className="top-rated"
                 onClick={() => {
                     setfilterList(listofresturant.filter(
-                        (res) => res.info.avgRating >= 4.2
+                        (res) => res.info.avgRating >= 4.5
                     ))
                     setinputvalue("");
                 }}
@@ -67,7 +67,7 @@ const Body = ()=>{
                 className="near-btn"
                 onClick={() => {
                     setfilterList(listofresturant.filter(
-                        (res) => res.info.sla.deliveryTime <= 30
+                        (res) => res.info.sla.deliveryTime <= 20
                     )) 
                     setinputvalue("");
                     // setlistofResturant(filteredList);

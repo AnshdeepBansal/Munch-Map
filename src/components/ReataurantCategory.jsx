@@ -1,7 +1,6 @@
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({data , showitems ,setshowIndex})=>{
-    console.log(data)
     const {title,itemCards} = data;
 
     return <>
