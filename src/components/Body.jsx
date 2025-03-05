@@ -20,7 +20,7 @@ const Body = ()=>{
     
     const fetch_data = async ()=>{
         console.log("fetching........s");
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[0]}&lng=${long[0]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
+        const data = await fetch(`https://foodfire.onrender.com/api/restaurants?lat=${lat[0]}&lng=${long[0]}&page_type=DESKTOP_WEB_LISTING`);
         const json = await data.json();
         console.log(json);
         const temp = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -67,15 +67,14 @@ const Body = ()=>{
                 className="near-btn"
                 onClick={() => {
                     setfilterList(listofresturant.filter(
-                        (res) => res.info.sla.deliveryTime <= 20
+                        (res) => res.info.sla.deliveryTime <= 25
                     )) 
                     setinputvalue("");
-                    // setlistofResturant(filteredList);
                 }}
             >
                 Fast Delivery
             </button>
-                <input className='searchBox' placeholder='Kya Khayega Bidu? .. aree bol sharma matt' onChange={(e)=>{
+                <input className='searchBox' placeholder='Ready to dig in? Start searching!' onChange={(e)=>{
                     setinputvalue(e.target.value);
                     const updatedList = resList.filter((res)=>res.info.name.toLowerCase().includes(inputvalue.toLowerCase()))
                     setfilterList(updatedList); 
