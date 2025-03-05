@@ -8,7 +8,7 @@ const useResCards = ()=>{
     
     const fetch_data = async ()=>{
         console.log("fetching........s");
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat[0]}&lng=${long[0]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`);
+        const data = await fetch(`https://foodfire.onrender.com/api/restaurants?lat=${lat[0]}&lng=${long[0]}&page_type=DESKTOP_WEB_LISTING`);
         const json = await data.json();
         console.log(json);
         setlist(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
